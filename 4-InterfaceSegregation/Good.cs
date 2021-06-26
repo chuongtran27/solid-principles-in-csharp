@@ -10,7 +10,7 @@ namespace SolidPrinciples.InterfaceSegregation.Good
         void Eat();
     }
     
-    public class Human: IWorker, IHuman
+    public class HumanWorker: IWorker, IHuman
     {
         public void Work()
         {
@@ -23,7 +23,7 @@ namespace SolidPrinciples.InterfaceSegregation.Good
     }
 
     // (Good) Separate interface help low-level modules only implement interfaces that they need
-    public class Robot: IWorker
+    public class RobotWorker: IWorker
     {
         public void Work()
         {

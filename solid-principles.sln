@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "solid-principles", "solid-principles.csproj", "{AFF431FF-4246-40A1-98F6-98FFA8CBC305}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidPrinciples", "SolidPrinciples.csproj", "{56D4607A-03E6-47D1-BD64-26298D726173}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AFF431FF-4246-40A1-98F6-98FFA8CBC305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFF431FF-4246-40A1-98F6-98FFA8CBC305}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFF431FF-4246-40A1-98F6-98FFA8CBC305}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFF431FF-4246-40A1-98F6-98FFA8CBC305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D4607A-03E6-47D1-BD64-26298D726173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D4607A-03E6-47D1-BD64-26298D726173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D4607A-03E6-47D1-BD64-26298D726173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D4607A-03E6-47D1-BD64-26298D726173}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

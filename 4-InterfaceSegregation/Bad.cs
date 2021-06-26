@@ -6,7 +6,7 @@ namespace SolidPrinciples.InterfaceSegregation.Bad
         void Eat();
     }
 
-    public class Human: IEmployee
+    public class HumanWorker: IEmployee
     {
         public void Work()
         {
@@ -19,7 +19,7 @@ namespace SolidPrinciples.InterfaceSegregation.Bad
         }
     }
 
-    public class Robot: IEmployee
+    public class RobotWorker: IEmployee
     {
         public void Work()
         {
