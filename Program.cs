@@ -2,11 +2,11 @@
 
 namespace solid_principles
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("This is SOLID Principles example in C#!");
         }
     }
 }

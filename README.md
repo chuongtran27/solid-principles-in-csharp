@@ -4,8 +4,8 @@
 
 This repository provides examples for SOLID Principles below:
 
-- Single Responsiblity Principle
-- Open-closed Principle
-- Liskov Substitution Principle
-- Interface Segregation Principle
-- Dependency Inversion Principle
+- S: Single Responsibility Principle
+- O: Open/Closed Principle
+- L: Liskov Substitution Principle
+- I: Interface Segregation Principle
+- D: Dependency Inversion Principle
