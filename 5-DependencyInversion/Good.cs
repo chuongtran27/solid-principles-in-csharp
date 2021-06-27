@@ -29,7 +29,7 @@ namespace SolidPrinciples.DependencyInversion.Good
         {
             //....working
         }
-        public void OldChange()
+        public void OilChange()
         {
             //....oil change
         }

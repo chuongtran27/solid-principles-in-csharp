@@ -51,7 +51,7 @@ namespace SolidPrinciples.LiskovSubstitution.Good
             Console.WriteLine("Area of rectangle is {0}", rectangle.GetArea());
             
             var square = new Square();
-            square.SetLength(4); // (Good) Only set one length for square
+            square.SetLength(4); // (Good) Only set length for square
             Console.WriteLine("Area of square is {0}", square.GetArea());
         }
     }

@@ -1,48 +1,37 @@
-using SolidPrinciples.SingleResponsibility.Model;
+using System;
 
 namespace SolidPrinciples.SingleResponsibility.Good
 {
-    // (Good) Separate class, each class only do one functionality
-    
-    /// <summary>
-    /// UserAuth authenticate user
-    /// </summary>
-    class UserAuth
+    // (Good) Separate class then each class only do one functionality
+    public class MailSender
     {
-        private User User;
-
-        public UserAuth(User user)
+        public void SendEmail(string eMailFrom ,string eMailTo , string eMailSubject , string eMailBody)
         {
-            User = user;
-        }
-
-        public bool VerifyCredentials()
-        {
-            // ...
-            return true;
+            // send email
         }
     }
 
-    /// <summary>
-    /// UserSettings manage settings of user 
-    /// </summary>
-    class UserSettings
+    public class Invoice
     {
-        private User User;
-        private UserAuth Auth;
+        private readonly MailSender _mailSender;
+        
+        private long _amount;
+        private DateTime _createdDate;
 
-        public UserSettings(User user)
+        public Invoice(MailSender mailSender)
         {
-            User = user;
-            Auth = new UserAuth(user);
+            _mailSender = mailSender;
         }
 
-        public void ChangeSettings(Settings settings)
+        public void AddInvoice()
         {
-            if (Auth.VerifyCredentials())
-            {
-                // ...
-            }
+            //...add invoice
+            _mailSender.SendEmail("EMailFrom", "EMailTo", "EMailSubject", "EMailBody");
+        }
+
+        public void DeleteInvoice()
+        {
+            //...delete invoice
         }
     }
 }

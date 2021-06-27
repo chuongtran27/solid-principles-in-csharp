@@ -1,29 +1,28 @@
-using SolidPrinciples.SingleResponsibility.Model;
+using System;
+using System.Net.Mail;
 
 namespace SolidPrinciples.SingleResponsibility.Bad
 {
-    class UserSettings
+    public class Invoice
     {
-        private User User;
+        private long _amount;
+        private DateTime _createdDate;
 
-        public UserSettings(User user)
+        public void AddInvoice()
         {
-            User = user;
+            // (Bad) Invoice class also need to send email
+            var mailMessage = new MailMessage("EMailFrom", "EMailTo", "EMailSubject", "EMailBody");
+            this.SendInvoiceEmail(mailMessage);
         }
 
-        public void ChangeSettings(Settings settings)
+        public void DeleteInvoice()
         {
-            if (VerifyCredentials())
-            {
-                // ...
-            }
+            //...delete invoice
         }
 
-        // (Bad) UserSettings also need to verify credentials
-        private bool VerifyCredentials()
+        private void SendInvoiceEmail(MailMessage mailMessage)
         {
-            // ...
-            return true;
+            //...send invoice mail
         }
     }
 }

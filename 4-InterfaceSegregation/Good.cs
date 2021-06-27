@@ -1,33 +1,55 @@
 namespace SolidPrinciples.InterfaceSegregation.Good
 {
-    public interface IWorker
+    public interface IPrinter
     {
-        void Work();
+        void Scan();
+        void Print();
     }
 
-    public interface IHuman
+    public interface IFax
     {
-        void Eat();
+        void Fax();
     }
-    
-    public class HumanWorker: IWorker, IHuman
+
+    public interface IPrintDuplex
     {
-        public void Work()
+        void PrintDuplex();
+    }
+
+    public class AdvancedPrinter : IPrinter, IFax, IPrintDuplex
+    {
+        public void Scan()
         {
-            // .... working
+            // ....scan
         }
-        public void Eat()
+
+        public void Print()
         {
-            // ...... eating in lunch break
+            // ....print
+        }
+
+        public void Fax()
+        {
+            // ....fax
+        }
+
+        public void PrintDuplex()
+        {
+            // ....print duplex
         }
     }
 
     // (Good) Separate interface help low-level modules only implement interfaces that they need
-    public class RobotWorker: IWorker
+    public class BasicPrinter : IPrinter
     {
-        public void Work()
+        public void Scan()
         {
-            //.... working
+            // ....scan
+        }
+
+        public void Print()
+        {
+            // ....print
         }
     }
 }
