@@ -2,8 +2,13 @@ using System;
 
 namespace SolidPrinciples.SingleResponsibility.Good
 {
+    public interface IMailSender
+    {
+        public void SendEmail(string eMailFrom, string eMailTo, string eMailSubject, string eMailBody);
+    }
+    
     // (Good) Separate class then each class only do one functionality
-    public class MailSender
+    public class MailSender : IMailSender
     {
         public void SendEmail(string eMailFrom ,string eMailTo , string eMailSubject , string eMailBody)
         {
@@ -13,12 +18,12 @@ namespace SolidPrinciples.SingleResponsibility.Good
 
     public class Invoice
     {
-        private readonly MailSender _mailSender;
+        private readonly IMailSender _mailSender;
         
         private long _amount;
         private DateTime _createdDate;
 
-        public Invoice(MailSender mailSender)
+        public Invoice(IMailSender mailSender)
         {
             _mailSender = mailSender;
         }

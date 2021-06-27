@@ -25,7 +25,7 @@ namespace SolidPrinciples.OpenClosed.Good
             _invoice = invoice;
         }
 
-        // Low-level module just need to call Create() method
+        // High-level module just need to call Create() method
         public void CreateInvoice(string url)
         {
             _invoice.Create();
