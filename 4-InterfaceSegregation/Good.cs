@@ -1,53 +1,32 @@
 namespace SolidPrinciples.InterfaceSegregation.Good
 {
-    public interface IPrinter
+    public interface IInternationalShip
     {
-        void Scan();
-        void Print();
+        void InternationalShip();
+    }
+    
+    public interface IDomesticShip
+    {
+        void DomesticShip();
     }
 
-    public interface IFax
+    public class ShipShipping: IDomesticShip, IInternationalShip
     {
-        void Fax();
-    }
-
-    public interface IPrintDuplex
-    {
-        void PrintDuplex();
-    }
-
-    public class AdvancedPrinter : IPrinter, IFax, IPrintDuplex
-    {
-        public void Scan()
+        public void DomesticShip()
         {
-            // ....scan
+            // ....ship
         }
 
-        public void Print()
+        public void InternationalShip()
         {
-            // ....print
-        }
-
-        public void Fax()
-        {
-            // ....fax
-        }
-
-        public void PrintDuplex()
-        {
-            // ....print duplex
+            // ....ship
         }
     }
-
+    
     // (Good) Separate interface help low-level modules only implement interfaces that they need
-    public class BasicPrinter : IPrinter
+    public class TruckShipping: IDomesticShip
     {
-        public void Scan()
-        {
-            // ....scan
-        }
-
-        public void Print()
+        public void DomesticShip()
         {
             // ....print
         }

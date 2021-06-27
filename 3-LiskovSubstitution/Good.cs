@@ -1,43 +1,25 @@
-using System;
-
 namespace SolidPrinciples.LiskovSubstitution.Good
 {
-    abstract class ShapeBase
+    abstract class Shipping
     {
-        protected double Width = 0;
-        protected double Height = 0;
-
-        public abstract double GetArea();
-    }
-    
-    class Rectangle: ShapeBase
-    {
-        public void SetWidth(double width)
+        public virtual void Ship()
         {
-            Width = width;
-        }
-
-        public void SetHeight(double height)
-        {
-            Height = height;
-        }
-
-        public override double GetArea()
-        {
-            return Width * Height;
         }
     }
 
-    class Square : ShapeBase
+    class AirShipping : Shipping
     {
-        public void SetLength(double length)
+        public override void Ship()
         {
-            Width = Height = length;
+            //...ship
         }
+    }
 
-        public override double GetArea()
+    class TruckShipping : Shipping
+    {
+        public override void Ship()
         {
-            return Math.Pow(Width, 2);
+            //...ship
         }
     }
 
@@ -45,15 +27,11 @@ namespace SolidPrinciples.LiskovSubstitution.Good
     {
         public static void Execute()
         {
-            var rectangle = new Rectangle();
-            rectangle.SetWidth(4);
-            rectangle.SetHeight(5); 
-            Console.WriteLine("Area of rectangle is {0}", rectangle.GetArea());
-            
-            var square = new Square();
-            square.SetLength(4); // (Good) Only set length for square
-            Console.WriteLine("Area of square is {0}", square.GetArea());
+            // (Good) AirShipping and TruckShipping can be a replacement for Shipping base class
+            Shipping airShipping = new AirShipping();
+            airShipping.Ship();
+            Shipping truckShipping = new TruckShipping();
+            truckShipping.Ship();
         }
     }
-
 }

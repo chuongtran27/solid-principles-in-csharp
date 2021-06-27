@@ -1,35 +1,34 @@
 namespace SolidPrinciples.OpenClosed.Good
 {
-    interface IAdapter
+    interface IInvoice
     {
-        string Fetch(string url);
+        public string Create();
     }
 
-    // (Good) Each class implement their own Fetch() method
-    class AjaxAdapter : IAdapter
+    // (Good) Each class implement their own Create() method
+    class ElectronicInvoice : IInvoice
     {
-        public string Fetch(string url) => "AjaxResult";
+        public string Create() => "Electronic invoice created";
     }
 
-    class NodeAdapter : IAdapter
+    class PaperInvoice : IInvoice
     {
-        public string Fetch(string url) => "HTTPResult";
+        public string Create() => "Paper invoice created";
     }
 
-    class HttpRequester
+    class Order
     {
-        private readonly IAdapter Adapter;
+        private readonly IInvoice _invoice;
 
-        public HttpRequester(IAdapter adapter)
+        public Order(IInvoice invoice)
         {
-            Adapter = adapter;
+            _invoice = invoice;
         }
 
-        // Low-level module just need to call Fetch() method
-        public string Fetch(string url)
+        // Low-level module just need to call Create() method
+        public void CreateInvoice(string url)
         {
-            return Adapter.Fetch(url);
+            _invoice.Create();
         }
     }
-
 }

@@ -1,56 +1,34 @@
 namespace SolidPrinciples.InterfaceSegregation.Bad
 {
-    public interface IPrinter
+    public interface IShipping
     {
-        void Scan();
-        void Print();
-        void Fax();
-        void PrintDuplex();
+        void DomesticShip();
+        void InternationalShip();
     }
 
-    public class AdvancedPrinter: IPrinter
+    public class ShipShipping: IShipping
     {
-        public void Scan()
+        public void DomesticShip()
         {
             // ....scan
         }
 
-        public void Print()
+        public void InternationalShip()
         {
             // ....print
-        }
-
-        public void Fax()
-        {
-            // ....fax
-        }
-
-        public void PrintDuplex()
-        {
-            // ....print duplex
         }
     }
     
-    public class BasicPrinter: IPrinter
+    public class TruckShipping: IShipping
     {
-        public void Scan()
+        public void DomesticShip()
         {
             // ....scan
         }
 
-        public void Print()
+        public void InternationalShip()
         {
-            // ....print
-        }
-
-        public void Fax()
-        {
-            // ....(Bad) basic printer can't fax, but it must implement this method
-        }
-
-        public void PrintDuplex()
-        {
-            // ....(Bad) basic printer can't print duplex, but it must implement this method
+            // ....(Bad) Truck shipping can not ship international, but it must implement this method
         }
     }
 }

@@ -1,46 +1,32 @@
+using SolidPrinciples.DependencyInversion.Models;
+
 namespace SolidPrinciples.DependencyInversion.Bad
 {
-    public abstract class EmployeeBase
+    public class OrderRepository
     {
-        public virtual void Work()
+        public Order GetOrderDetail(int id)
         {
-            //....working
+            return new Order()
+            {
+                Id = id,
+                Items = new[] {"Book", "Toothpaste"},
+                TotalAmount = 10000
+            };
         }
     }
 
-    public class Human : EmployeeBase
+    public class OrderApplication
     {
-        public override void Work()
+        private readonly OrderRepository _orderRepository;
+        
+        // (Bad) OrderApplication class depend on OrderRepository class
+        public OrderApplication(OrderRepository orderRepository)
         {
-            //.... working
+            _orderRepository = orderRepository;
+        }
+        public Order GetOrderDetail(int id)
+        {
+            return _orderRepository.GetOrderDetail(id);
         }
     }
-
-    public class Robot : EmployeeBase
-    {
-        public override void Work()
-        {
-            //.... working
-        }
-    }
-
-    public class Manager
-    {
-        private readonly Robot _robot;
-        private readonly Human _human;
-
-        // (Bad) EmployeeBase depend on Robot & Human. So need to pass them to call Work() method  
-        public Manager(Robot robot, Human human)
-        {
-            _robot = robot;
-            _human = human;
-        }
-
-        public void Manage()
-        {
-            _robot.Work();
-            _human.Work();
-        }
-    }
-
 }

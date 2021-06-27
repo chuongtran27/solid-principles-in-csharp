@@ -1,58 +1,40 @@
-using System.Collections.Generic;
+using SolidPrinciples.DependencyInversion.Models;
 
 namespace SolidPrinciples.DependencyInversion.Good
 {
-    public interface IEmployee
+    public interface IOrderRepository
     {
-        void Work();
+        Order GetOrderDetail(int id);
     }
 
-    public class Human : IEmployee
+    public class OrderRepository : IOrderRepository
     {
-        public void Work()
+        public Order GetOrderDetail(int id)
         {
-            // ....working
-        }
-        public void Rest()
-        {
-            // ....rest
-        }
-        public void Eat()
-        {
-            // ....eat
-        }
-    }
-
-    public class Robot : IEmployee
-    {
-        public void Work()
-        {
-            //....working
-        }
-        public void OilChange()
-        {
-            //....oil change
-        }
-    }
-
-    public class Manager
-    {
-        private readonly IEnumerable<IEmployee> _employees;
-
-        // (Good) Create abstract IEmployee interface
-        // High-level modules doesn't need to know about implementation of low-level modules.
-        // Just use the methods which is defined in IEmployee interface.
-        public Manager(IEnumerable<IEmployee> employees)
-        {
-            _employees = employees;
-        }
-
-        public void Manage()
-        {
-            foreach (var employee in _employees)
+            return new Order()
             {
-                employee.Work();
-            }
+                Id = id,
+                Items = new[] {"Book", "Toothpaste"},
+                TotalAmount = 10000
+            };
         }
     }
+
+    public class OrderApplication
+    {
+        private readonly IOrderRepository _orderRepository;
+        public OrderApplication(IOrderRepository orderRepository)
+        {
+            _orderRepository = orderRepository;
+        }
+        
+        // (Good) Create abstract IOrderRepository interface
+        // High-level modules doesn't need to know about implementation of low-level modules.
+        // OrderApplication just depend on abstract interface IOrderRepository.
+        public Order GetOrderDetail(int id)
+        {
+            return _orderRepository.GetOrderDetail(id);
+        }
+    }
+
 }

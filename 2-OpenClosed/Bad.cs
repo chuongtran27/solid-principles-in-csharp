@@ -1,56 +1,62 @@
 namespace SolidPrinciples.OpenClosed.Bad
 {
-    abstract class AdapterBase
+    enum InvoiceType
     {
-        protected string Name;
+        ElectronicInvoice,
+        PaperInvoice
+    }
+    
+    abstract class InvoiceBase
+    {
+        protected InvoiceType Type;
 
-        public string GetName()
+        public InvoiceType GetType()
         {
-            return Name;
+            return Type;
         }
     }
 
-    class AjaxAdapter : AdapterBase
+    class ElectronicInvoice : InvoiceBase
     {
-        public AjaxAdapter()
+        public ElectronicInvoice()
         {
-            Name = "ajaxAdapter";
+            Type = InvoiceType.ElectronicInvoice;
         }
     }
 
-    class HTTPAdapter : AdapterBase
+    class PaperInvoice : InvoiceBase
     {
-        public HTTPAdapter()
+        public PaperInvoice()
         {
-            Name = "httpAdapter";
+            Type = InvoiceType.PaperInvoice;
         }
     }
 
-    class HttpRequester : AdapterBase
+    class Order
     {
-        private readonly AdapterBase Adapter;
+        private readonly InvoiceBase _invoice;
 
-        public HttpRequester(AdapterBase adapter)
+        public Order(InvoiceBase invoice)
         {
-            Adapter = adapter;
+            _invoice = invoice;
         }
 
-        // (Bad) Modify existing code to implement request calling methods for each adapter.
+        // (Bad) Modify existing code to implement create invoice methods for each invoice type.
         public string Fetch(string url)
         {
-            var adapterName = Adapter.GetName();
-            switch (adapterName)
+            var invoiceType = _invoice.GetType();
+            switch (invoiceType)
             {
-                case "ajaxAdapter":
-                    return MakeAjaxCall(url);
-                case "httpAdapter":
-                    return MakeHttpCall(url);
+                case InvoiceType.ElectronicInvoice:
+                    return CreateElectronicInvoice();
+                case InvoiceType.PaperInvoice:
+                    return CreatePaperInvoice();
                 default:
                     return null;
             }
         }
 
-        private string MakeAjaxCall(string url) => "AjaxResult";
-        private string MakeHttpCall(string url) => "HTTPResult";
+        private string CreateElectronicInvoice() => "Electronic invoice created";
+        private string CreatePaperInvoice() => "Paper invoice created";
     }
 }
