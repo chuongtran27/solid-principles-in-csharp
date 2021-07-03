@@ -10,7 +10,7 @@ namespace SolidPrinciples.InterfaceSegregation.Good
         void DomesticShip();
     }
 
-    public class ShipShipping: IDomesticShip, IInternationalShip
+    public class AirShipping: IDomesticShip, IInternationalShip
     {
         public void DomesticShip()
         {

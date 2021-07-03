@@ -6,7 +6,7 @@ namespace SolidPrinciples.InterfaceSegregation.Bad
         void InternationalShip();
     }
 
-    public class ShipShipping: IShipping
+    public class AirShipping: IShipping
     {
         public void DomesticShip()
         {
