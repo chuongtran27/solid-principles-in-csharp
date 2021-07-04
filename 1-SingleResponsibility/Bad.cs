@@ -11,7 +11,7 @@ namespace SolidPrinciples.SingleResponsibility.Bad
         public void AddInvoice()
         {
             // (Bad) Invoice class also send email
-            var mailMessage = new MailMessage("EMailFrom", "EMailTo", "EMailSubject", "EMailBody");
+            var mailMessage = new MailMessage("Store101", "customer@email.com", "Invoice created", "InvoiceDetail");
             this.SendInvoiceEmail(mailMessage);
         }
 

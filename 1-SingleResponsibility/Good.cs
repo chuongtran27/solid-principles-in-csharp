@@ -31,7 +31,7 @@ namespace SolidPrinciples.SingleResponsibility.Good
         public void AddInvoice()
         {
             //...add invoice
-            _mailSender.SendEmail("EMailFrom", "EMailTo", "EMailSubject", "EMailBody");
+            _mailSender.SendEmail("Store101", "customer@email.com", "Invoice created", "InvoiceDetail");
         }
 
         public void DeleteInvoice()
