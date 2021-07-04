@@ -1,34 +1,44 @@
 namespace SolidPrinciples.InterfaceSegregation.Good
 {
-    public interface IInternationalShip
+    public interface IBaseService
     {
-        void InternationalShip();
-    }
-    
-    public interface IDomesticShip
-    {
-        void DomesticShip();
+        void Add();
+        void Update();
+        void Delete();
     }
 
-    public class AirShipping: IDomesticShip, IInternationalShip
+    // (Good) Separate interface help high-level modules only implement interfaces that they need
+    public interface IOrderService : IBaseService
     {
-        public void DomesticShip()
-        {
-            // ....ship
-        }
+        void UpdateOrderStatus();
+    }
 
-        public void InternationalShip()
+    public class OrderService: IOrderService
+    {
+        public void Add() {} // ...add
+        public void Update() {} // ...update
+        public void Delete() {} // ...delete
+
+        public void UpdateOrderStatus()
         {
-            // ....ship
+            // ...update order status
         }
     }
     
-    // (Good) Separate interface help low-level modules only implement interfaces that they need
-    public class TruckShipping: IDomesticShip
+    public interface IWarehouseService : IBaseService
     {
-        public void DomesticShip()
+        void PackOrder();
+    }
+    
+    public class WarehouseService: IWarehouseService
+    {
+        public void Add() {} // ...add
+        public void Update() {} // ...update
+        public void Delete() {} // ...delete
+
+        public void PackOrder()
         {
-            // ....print
+            // ...pack order
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SolidPrinciples.SingleResponsibility.Good
     {
         public void SendEmail(string eMailFrom ,string eMailTo , string eMailSubject , string eMailBody)
         {
-            // send email
+            //...send email
         }
     }
 

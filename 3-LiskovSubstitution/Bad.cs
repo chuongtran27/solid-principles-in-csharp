@@ -4,7 +4,7 @@ namespace SolidPrinciples.LiskovSubstitution.Bad
     {
         public virtual void Ship()
         {
-            //...ship
+            // ...ship
         }
     }
 
@@ -12,7 +12,7 @@ namespace SolidPrinciples.LiskovSubstitution.Bad
     {
         public override void Ship()
         {
-            //...ship
+            // ...ship
         }
     }
 

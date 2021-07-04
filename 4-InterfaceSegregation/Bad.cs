@@ -1,34 +1,45 @@
 namespace SolidPrinciples.InterfaceSegregation.Bad
 {
-    public interface IShipping
+    public interface IService
     {
-        void DomesticShip();
-        void InternationalShip();
+        void Add();
+        void Update();
+        void Delete();
+        void UpdateOrderStatus();
+        void PackOrder();
     }
 
-    public class AirShipping: IShipping
+    public class OrderService: IService
     {
-        public void DomesticShip()
-        {
-            // ....scan
-        }
+        public void Add() {} // ...add
+        public void Update() {} // ...update
+        public void Delete() {} // ...delete
 
-        public void InternationalShip()
+        public void UpdateOrderStatus()
         {
-            // ....print
+            // ...update order status
+        } 
+
+        public void PackOrder()
+        {
+            // ....(Bad) Order service can not pack order, but it must implement this method
         }
     }
     
-    public class TruckShipping: IShipping
+    public class WarehouseService: IService
     {
-        public void DomesticShip()
+        public void Add() {} // ...add
+        public void Update() {} // ...update
+        public void Delete() {} // ...delete
+
+        public void UpdateOrderStatus()
         {
-            // ....scan
+            // ....(Bad) Warehouse service can not update order status, but it must implement this method
         }
 
-        public void InternationalShip()
+        public void PackOrder()
         {
-            // ....(Bad) Truck shipping can not ship international, but it must implement this method
+            // ...pack order
         }
     }
 }

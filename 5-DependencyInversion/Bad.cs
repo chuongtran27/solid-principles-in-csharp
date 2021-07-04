@@ -19,7 +19,7 @@ namespace SolidPrinciples.DependencyInversion.Bad
     {
         private readonly OrderRepository _orderRepository;
         
-        // (Bad) OrderApplication class depend on OrderRepository class
+        // (Bad) This way make OrderApplication class depend on OrderRepository class
         public OrderApplication(OrderRepository orderRepository)
         {
             _orderRepository = orderRepository;

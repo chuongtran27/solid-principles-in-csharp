@@ -17,12 +17,12 @@ namespace SolidPrinciples.SingleResponsibility.Bad
 
         public void DeleteInvoice()
         {
-            //...delete invoice
+            // ...delete invoice
         }
 
         private void SendInvoiceEmail(MailMessage mailMessage)
         {
-            //...send invoice mail
+            // ...send invoice mail
         }
     }
 }
