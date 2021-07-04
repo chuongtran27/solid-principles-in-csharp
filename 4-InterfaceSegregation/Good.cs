@@ -7,7 +7,7 @@ namespace SolidPrinciples.InterfaceSegregation.Good
         void Delete();
     }
 
-    // (Good) Separate interface help high-level modules only implement interfaces that they need
+    // (Good) Separate interface help high-level modules only implement interfaces that they are really need
     public interface IOrderService : IBaseService
     {
         void UpdateOrderStatus();

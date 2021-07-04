@@ -20,7 +20,7 @@ namespace SolidPrinciples.LiskovSubstitution.Bad
     {
         public static void Execute()
         {
-            // (Bad) AirShipping can not be replaced by TruckShipping. It affects correctness of the application
+            // (Bad) AirShipping can not be replaced by TruckShipping. It affects the correctness of the application
             AirShipping airShipping = new TruckShipping();
             airShipping.Ship();
         }
